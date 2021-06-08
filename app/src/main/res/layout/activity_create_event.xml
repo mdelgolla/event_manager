@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_close"
+                android:onClick="dismiss"/>
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="Add Event"
+                android:onClick="addEvent"
+                style="@style/btnStyle" />
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/txtEvent"
+            style="@style/inputTextStyle"
+            android:hint="Event Name"
+            android:inputType="text"
+            android:singleLine="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/iconStyles"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_event_note" />
+
+            <EditText
+                android:id="@+id/txtDescription"
+                style="@style/inputTextStyle"
+                android:hint="Description"
+                android:inputType="textMultiLine"
+                android:maxLines="10" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/iconStyles"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_location_on" />
+
+            <EditText
+                android:id="@+id/txtLocation"
+                style="@style/inputTextStyle"
+                android:hint="Location"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="setStartTime"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/iconStyles"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_access_alarms" />
+
+            <EditText
+                android:enabled="false"
+                android:id="@+id/txtStartTime"
+                style="@style/inputTextStyle"
+                android:hint="Start time" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="setEndTime"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/iconStyles"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_access_alarms" />
+
+            <EditText
+                android:id="@+id/txtEndTime"
+                style="@style/inputTextStyle"
+                android:enabled="false"
+                android:hint="End Time"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                style="@style/iconStyles"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_notifications_none" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right|center"
+                android:layoutDirection="rtl"
+                android:text="Remind me 5 minutes before  " />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+            <ImageView
+                style="@style/iconStyles"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_notifications_none" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right|center"
+                android:layoutDirection="rtl"
+                android:text="Remind me 10 minutes before" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                style="@style/iconStyles"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_notifications_none" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right|center"
+                android:layoutDirection="rtl"
+                android:text="Remind me 30 minutes before" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnViewMyEvents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="View My Events"
+            android:onClick="viewMyEvents"
+            style="@style/btnStyle" />
+    </LinearLayout>
+</LinearLayout>
