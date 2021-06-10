@@ -92,6 +92,24 @@ public class DBHelper extends SQLiteOpenHelper {
         return eventList;
     }
 
+    public List<String>getDateList(){
+        List<String> dateList = new ArrayList<String>();
+        // Select All Query
+        String selectQuery = "SELECT "+ KEY_EVENT_DATE +" FROM " + TABLE_EVENTS;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                dateList.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        // return date list
+        return dateList;
+    }
+
     // Deleting single event
     public void deleteEvent(Event event) {
         SQLiteDatabase db = this.getWritableDatabase();

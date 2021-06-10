@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <CalendarView
+    <sun.bob.mcalendarview.MCalendarView
         android:id="@+id/calander"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

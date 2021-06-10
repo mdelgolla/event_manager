@@ -25,7 +25,7 @@ public class ViewEventListActivity extends AppCompatActivity {
 
         eventList=db.getAllEvents();
 
-        EventAdapter adapter = new EventAdapter(this, eventList);
+        EventAdapter adapter = new EventAdapter(this, eventList,db);
 
         ListView listView = (ListView) findViewById(R.id.event_list);
         listView.setAdapter(adapter);
