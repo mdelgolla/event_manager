@@ -44,17 +44,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//        long selectedDate = calendarView.getDate();
-//        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-//            @Override
-//            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-//                // Note that months are indexed from 0. So, 0 means January, 1 means february, 2 means march etc.
-//                String selectedDate = year+"-"+(month + 1)+"-"+dayOfMonth;
-//                Intent intent = new Intent(getBaseContext(), CreateEventActivity.class);
-//                intent.putExtra("selected_date", selectedDate);
-//                startActivity(intent);
-//            }
-//        });
         retrieveDates();
 
     }
@@ -75,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 int mYear = c.get(Calendar.YEAR);
                 int mMonth = c.get(Calendar.MONTH);
                 int mDay = c.get(Calendar.DAY_OF_MONTH);
-                calendarView.markDate(new DateData(mYear, mMonth, mDay).setMarkStyle(new MarkStyle(MarkStyle.BACKGROUND, getResources().getColor(R.color.colorPrimary))));
+                calendarView.markDate(new DateData(mYear, mMonth, mDay).setMarkStyle(new MarkStyle(MarkStyle.BACKGROUND, getResources().getColor(R.color.colorPink))));
 
             } catch (ParseException e) {
                 e.printStackTrace();

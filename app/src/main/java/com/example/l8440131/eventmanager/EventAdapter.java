@@ -1,6 +1,8 @@
 package com.example.l8440131.eventmanager;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +21,17 @@ public class EventAdapter extends BaseAdapter {
     LayoutInflater inflter;
     DBHelper dbHelper;
 
-    public EventAdapter(Context applicationContext, List<Event>eventList,DBHelper dbHelper) {
+    public EventAdapter(Context context, List<Event>eventList,DBHelper dbHelper) {
         this.context = context;
         this.eventList = eventList;
-        inflter = (LayoutInflater.from(applicationContext));
+        inflter = (LayoutInflater.from(context));
         this.dbHelper=dbHelper;
+    }
+
+    public void updateEventList(List<Event> newlist) {
+        eventList.clear();
+        eventList.addAll(newlist);
+        this.notifyDataSetChanged();
     }
     @Override
     public int getCount() {
@@ -51,10 +59,33 @@ public class EventAdapter extends BaseAdapter {
         imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dbHelper.deleteEvent(eventList.get(i));
-                notifyDataSetChanged();
+                deleteEvent(eventList.get(i));
+
             }
         });
         return view;
+    }
+
+    public void deleteEvent(final Event event){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        alertDialogBuilder.setTitle("Delete Event");
+        alertDialogBuilder.setMessage("Are you sure you want to delete the event");
+                alertDialogBuilder.setPositiveButton("yes",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                dbHelper.deleteEvent(event);
+                                updateEventList(eventList);
+                            }
+                        });
+
+        alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }

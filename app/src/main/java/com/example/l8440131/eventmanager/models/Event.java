@@ -1,6 +1,8 @@
 package com.example.l8440131.eventmanager.models;
 
-public class Event {
+import java.io.Serializable;
+
+public class Event implements Serializable {
    private int id;
    private String eventName;
    private String location;

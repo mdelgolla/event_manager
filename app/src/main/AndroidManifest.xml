@@ -19,6 +19,9 @@
         </activity>
         <activity android:name=".CreateEventActivity" />
         <activity android:name=".ViewEventListActivity" />
+        <activity android:name=".ViewEventActivity" />
+
+        <receiver android:name= ".services.NotificationPublisher" />
     </application>
 
 </manifest>

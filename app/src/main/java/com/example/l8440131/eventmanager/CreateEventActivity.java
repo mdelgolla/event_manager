@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ import java.util.Date;
 
 public class CreateEventActivity extends AppCompatActivity {
     private EditText txtEvent, txtDescription, txtLocation, txtStartTime, txtEndTime;
+    private CheckBox chkBox1,chkBox2,chkBox3;
     private Button btnSave;
     private String eventDate;
     public static final String NOTIFICATION_CHANNEL_ID = "10001";
@@ -51,10 +53,14 @@ public class CreateEventActivity extends AppCompatActivity {
         txtStartTime = (EditText) findViewById(R.id.txtStartTime);
         txtEndTime = (EditText) findViewById(R.id.txtEndTime);
         btnSave = (Button) findViewById(R.id.btnSave);
+        chkBox1=(CheckBox)findViewById(R.id.chkBox1);
+        chkBox2=(CheckBox)findViewById(R.id.chkBox2);
+        chkBox3=(CheckBox)findViewById(R.id.chkBox3);
         Intent intent = getIntent();
         eventDate = intent.getStringExtra("selected_date");
         txtStartTime.setText(new StringBuilder().append(eventDate));
         txtEndTime.setText(new StringBuilder().append(eventDate));
+
 
     }
 
@@ -66,38 +72,31 @@ public class CreateEventActivity extends AppCompatActivity {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         assert alarmManager != null;
         alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, delay, pendingIntent);
+        if (chkBox1.isChecked()){
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, delay,
+                    1000 * 60 * 5, pendingIntent);
+        }
+        if (chkBox2.isChecked()){
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, delay,
+                    1000 * 60 * 30, pendingIntent);
+        }
+        if (chkBox3.isChecked()){
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, delay,
+                    1000 * 60 * 60, pendingIntent);
+        }
+
     }
 
     public Notification getNotification(String eventTitle, String description) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, default_notification_channel_id);
         builder.setContentTitle(eventTitle);
         builder.setContentText(description);
-        builder.setSmallIcon(R.drawable.ic_launcher_foreground);
+        builder.setSmallIcon(R.drawable.ic_stat_calendar_today);
         builder.setAutoCancel(true);
         builder.setChannelId(NOTIFICATION_CHANNEL_ID);
         return builder.build();
     }
 
-    //    @Override
-//    public void onClick(View view) {
-//        switch (view.getId()){
-//            case R.id.btnSave:
-//                if (validateInputs()){
-//                    Event event =new Event(txtEvent.getText().toString(),txtLocation.getText().toString(),txtDescription.getText().toString(),eventDate,txtStartTime.getText().toString(),txtEndTime.getText().toString());
-//                   if( db.insert(event)){
-//                       showSuccessDailog();
-//                   }
-//                }
-//                break;
-//            case R.id.txtStartTime:
-//                showTimePicker();
-////                scheduleNotification(getNotification( btnDate .getText().toString()) , date.getTime()) ;
-//                break;
-//            case R.id.txtEndTime:
-//                showTimePicker();
-//                break;
-//        }
-//    }
     boolean validateInputs() {
         return true;
     }
@@ -149,8 +148,8 @@ public class CreateEventActivity extends AppCompatActivity {
     public void showSuccessDailog() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(CreateEventActivity.this);
         View mView = getLayoutInflater().inflate(R.layout.custom_dialog, null);
-        Button btn_cancel = (Button) mView.findViewById(R.id.buttonOk);
-        Button btn_okay = (Button) mView.findViewById(R.id.buttonCancel);
+        Button btn_cancel = (Button) mView.findViewById(R.id.buttonCancel);
+        Button btn_okay = (Button) mView.findViewById(R.id.buttonOk);
         builder.setView(mView);
         final AlertDialog alertDialog = builder.create();
 
