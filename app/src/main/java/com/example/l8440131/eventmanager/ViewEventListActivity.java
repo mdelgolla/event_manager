@@ -37,7 +37,7 @@ public class ViewEventListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Intent intent = new Intent(getBaseContext(), CreateEventActivity.class);
+                Intent intent = new Intent(getBaseContext(), ViewEventActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("event", eventList.get(position));
                 intent.putExtras(bundle);

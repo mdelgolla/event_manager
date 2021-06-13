@@ -27,9 +27,9 @@ public class ViewEventActivity extends AppCompatActivity {
         txtLocation=(TextView)findViewById(R.id.txtLocation);
         txtLocation.setText(event.getLocation());
         txtStartTime=(TextView)findViewById(R.id.txtStartTime);
-        txtStartTime.setText(event.getEventDate()+" "+event.getStartTime());
+        txtStartTime.setText(event.getStartTime());
         txtEndTime=(TextView)findViewById(R.id.txtEndTime);
-        txtStartTime.setText(event.getEventDate()+" "+event.getEndTime());
+        txtEndTime.setText(event.getEndTime());
     }
 
     public void goToHome(View view) {

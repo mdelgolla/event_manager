@@ -28,9 +28,8 @@ public class EventAdapter extends BaseAdapter {
         this.dbHelper=dbHelper;
     }
 
-    public void updateEventList(List<Event> newlist) {
-        eventList.clear();
-        eventList.addAll(newlist);
+    public void updateEventList(int item) {
+        this.eventList.remove(item);
         this.notifyDataSetChanged();
     }
     @Override
@@ -59,14 +58,14 @@ public class EventAdapter extends BaseAdapter {
         imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deleteEvent(eventList.get(i));
+                deleteEvent(eventList.get(i),i);
 
             }
         });
         return view;
     }
 
-    public void deleteEvent(final Event event){
+    public void deleteEvent(final Event event, final int item){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
         alertDialogBuilder.setTitle("Delete Event");
         alertDialogBuilder.setMessage("Are you sure you want to delete the event");
@@ -75,7 +74,7 @@ public class EventAdapter extends BaseAdapter {
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
                                 dbHelper.deleteEvent(event);
-                                updateEventList(eventList);
+                                updateEventList(item);
                             }
                         });
 

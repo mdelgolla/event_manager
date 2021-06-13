@@ -5,7 +5,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.example.l8440131.eventmanager"
+        applicationId "com.example.l8440131.a1.eventmanager"
         minSdkVersion 17
         targetSdkVersion 30
         versionCode 1
